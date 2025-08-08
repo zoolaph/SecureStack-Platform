@@ -1,0 +1,14 @@
+{
+    "name": "My Codespace",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {},
+    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "remoteEnv": {
+      "AWS_ACCESS_KEY_ID": "${secrets.AWS_ACCESS_KEY_ID}",
+      "AWS_SECRET_ACCESS_KEY": "${secrets.AWS_SECRET_ACCESS_KEY}",
+      "AWS_SESSION_TOKEN": "${secrets.AWS_SESSION_TOKEN}",
+      "AWS_DEFAULT_REGION": "eu-west-3",
+      "AWS_CLI_AUTO_PROMPT": "on-partial"
+    }
+  }
+  
