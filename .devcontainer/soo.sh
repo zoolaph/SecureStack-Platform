@@ -1,11 +1,23 @@
 #!/bin/bash
-mkdir ~/.tmp && cd $_
+set -e
 
-mkdir ~/.bin && cd $_
-wget https://raw.githubusercontent.com/pahud/vscode/main/.devcontainer/bin/aws-sso-credential-process && \
+# Create a dedicated folder for the script
+mkdir -p ~/.aws/bin
+cd ~/.aws/bin
+
+# Download the script
+wget https://raw.githubusercontent.com/pahud/vscode/main/.devcontainer/bin/aws-sso-credential-process -O aws-sso-credential-process
+
+# Make it executable
 chmod +x aws-sso-credential-process
 
-aws configure set credential_process ${HOME}/.bin/aws-sso-credential-process
-touch ~/.aws/credentials && chmod 600 $_
-aws configure sso --profile default
+# Point AWS CLI to use it for the default profile
+aws configure set credential_process "${HOME}/.aws/bin/aws-sso-credential-process" --profile default
 
+# Prepare credentials file (empty but correct perms)
+mkdir -p ~/.aws
+touch ~/.aws/credentials
+chmod 600 ~/.aws/credentials
+
+# Run SSO config wizard
+aws configure sso --profile default
