@@ -1,0 +1,7 @@
+# This file is consumed by: terraform init -backend-config=sandbox.tfbackend
+bucket         = "tf-state-021471808095-eu-west-3"
+key            = "envs/sandbox/terraform.tfstate"  # unique per environment
+region         = "eu-west-3"
+dynamodb_table = "tf-locks"
+kms_key_id     = "alias/tf-state"
+encrypt        = true
