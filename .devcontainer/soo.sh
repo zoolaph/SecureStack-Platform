@@ -2,6 +2,8 @@
 set -e
 
 # Create a dedicated folder for the script
+unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN
+
 mkdir -p ~/.aws/bin
 cd ~/.aws/bin
 
